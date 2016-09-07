@@ -1,5 +1,6 @@
 package com.example.dmitry.game;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
                          {0,0,0,0}};
     TextView arrShow;
     TextView txtScore;
+    TextView txtTotalScore;
     mGameFieldAction gameField;
     float oldTouchCoordinatesX = 0;
     float oldTouchCoordinatesY = 0;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         touchSurface = (RelativeLayout)findViewById(R.id.touchSurface);
         txtScore = (TextView)findViewById(R.id.txtScore);
+        txtTotalScore = (TextView)findViewById(R.id.txtTotalScore);
 
 
 
@@ -126,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
                 txtGameField[i][j].setBackground(getDrawable(R.drawable.courners_cells));
             }
         }
-        ;
 
-        gameField = new mGameFieldAction(arr,arrShow,txtGameField,txtScore);
+
+        gameField = new mGameFieldAction(arr,arrShow,txtGameField,txtScore,txtTotalScore,getApplicationContext());
     }
 
 

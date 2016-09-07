@@ -1,5 +1,7 @@
 package com.example.dmitry.game;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -17,22 +19,42 @@ public class mGameFieldAction {
     final byte SWIPE_TOP = 2;
     final byte SWIPE_DOWN = 3;
 
+    final String TOTAL_SCORE = "Total_Score";
+
 
     int[][] arr;
     TextView gameField;
     int[][] checkArr;
     TextView[][] txtGameField;
     TextView txtScore;
+    TextView tvTotalScore;
     int score = 0;
 
-    public mGameFieldAction(int[][] gameFieldArr, TextView gameField,TextView[][] txtGameField,TextView txtScore){
+    SharedPreferences totalScore;
+    int totalScoreValue;
+
+    public mGameFieldAction(int[][] gameFieldArr, TextView gameField,TextView[][] txtGameField,TextView txtScore,TextView tvTotalScore,Context context){
 
 
         arr = gameFieldArr;
         this.gameField = gameField;
         this.txtGameField = txtGameField;
         this.txtScore = txtScore;
+        this.tvTotalScore = tvTotalScore;
         txtScore.setText(score+"");
+
+        totalScore = context.getSharedPreferences("Total score",Context.MODE_PRIVATE);
+
+        if(totalScore.getInt(TOTAL_SCORE,-1) == -1){
+            Log.i("MY_TAG","Game started for first time");
+            //If game first Started
+            updateTotalScore(0);
+
+        }else{
+            totalScoreValue = totalScore.getInt(TOTAL_SCORE,0);
+            tvTotalScore.setText(totalScoreValue+"");
+        }
+
 
     }
 
@@ -176,6 +198,11 @@ public class mGameFieldAction {
 
     public void updateScreen(TextView arrShow){
 
+        if(score > totalScoreValue){
+            updateTotalScore(score);
+            tvTotalScore.setText(score+"");
+        }
+
 
 
         if(checkArr == null) {
@@ -188,6 +215,7 @@ public class mGameFieldAction {
             Log.i("MY_TAG","CHECK_ARR EQUALS NULL");
 
             addNewItem();
+
         }
         else {
 
@@ -254,12 +282,20 @@ public class mGameFieldAction {
             int x;
             int y;
             do {
-                x = random.nextInt((3 - 0) + 1);
-                y = random.nextInt((3 - 0) + 1);
+                x = random.nextInt((3) + 1);
+                y = random.nextInt((3) + 1);
 
             } while (arr[x][y] != 0);
 
             arr[x][y] = 2;
         }
+    }
+
+    private void updateTotalScore(int scoreValue){
+        SharedPreferences.Editor editor = totalScore.edit();
+        editor.putInt(TOTAL_SCORE,scoreValue);
+        editor.commit();
+        totalScoreValue = scoreValue;
+        Log.i("MY_TAG","TOTAL SCORE = " + scoreValue);
     }
 }
