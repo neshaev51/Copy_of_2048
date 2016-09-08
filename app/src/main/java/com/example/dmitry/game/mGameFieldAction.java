@@ -2,6 +2,7 @@ package com.example.dmitry.game;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -210,6 +211,9 @@ public class mGameFieldAction {
             for (int k = 0; k < 4; k++) {
                 for (int j = 0; j < 4; j++) {
                     checkArr[k][j] = arr[k][j];
+
+
+
                 }
             }
             Log.i("MY_TAG","CHECK_ARR EQUALS NULL");
@@ -246,20 +250,77 @@ public class mGameFieldAction {
 
 
         //set values on the screen
+        //updates colors of fields(09.09.2016)
         for(int i = 0;i<4;i++){
             for(int j = 0;j<4;j++){
-                if(arr[i][j] == 0)
+                if(arr[i][j] == 0) {
                     txtGameField[i][j].setText("");
+                    txtGameField[i][j].setBackgroundColor(Color.parseColor("#e0dcdc"));
+                }
                 else {
                     txtGameField[i][j].setText(arr[i][j] + "");
-                    if(arr[i][j] <100){
+                    if (arr[i][j] < 100) {
                         txtGameField[i][j].setTextSize(40);
-                    }
-                    else if(arr[i][j]>100 & arr[i][j] <1000){
+                    } else if (arr[i][j] > 100 & arr[i][j] < 1000) {
                         txtGameField[i][j].setTextSize(35);
-                    }
-                    else
+                    } else {
                         txtGameField[i][j].setTextSize(30);
+                    }
+                }
+
+
+                //Color changer
+                switch(arr[i][j]){
+                    case 2:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#EEE4DA"));
+                        txtGameField[i][j].setTextColor(Color.parseColor("#756A64"));
+                        break;
+                    }
+                    case 4:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#EEE4DA"));
+                        txtGameField[i][j].setTextColor(Color.parseColor("#756A64"));
+                        break;
+                    }case 8:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#F2B17B"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }
+                    case 16:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#F59563"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }case 32:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#F57C5F"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }
+                    case 64:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#F65D3B"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }case 128:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#EDCE71"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }case 256:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#F2D04B"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }
+                    case 512:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#F2D04B"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }case 1024:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#E3BA14"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }case 2048:{
+                        txtGameField[i][j].setBackgroundColor(Color.parseColor("#ECC402"));
+                        txtGameField[i][j].setTextColor(Color.WHITE);
+                        break;
+                    }
+
                 }
             }
         }
