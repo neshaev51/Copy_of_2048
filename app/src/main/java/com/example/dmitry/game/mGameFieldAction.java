@@ -56,6 +56,9 @@ public class mGameFieldAction {
             tvTotalScore.setText(totalScoreValue+"");
         }
 
+        //To make first number appear we emulate swipe
+        swipe(SWIPE_TOP);
+
 
     }
 

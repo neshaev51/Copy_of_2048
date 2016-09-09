@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FBF8EF">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="HIGH SCORE"
+                android:text="BEST SCORE"
                 android:id="@+id/textView3"
                 android:textColor="#fffbfb"
                 android:textSize="14dp"
@@ -124,7 +125,6 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:id="@+id/txt_cell_0_0"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="2"
                         android:textSize="40dp"
                         android:textStyle="bold"
                         android:background="@drawable/courners_cells" />
@@ -145,8 +145,7 @@
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#fffbfb"
                         android:textSize="35dp"
-                        android:textStyle="bold"
-                        android:text="128" />
+                        android:textStyle="bold" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -163,7 +162,6 @@
                         android:id="@+id/txt_cell_0_2"
                         android:gravity="center_vertical|center_horizontal"
                         android:background="#fffbfb"
-                        android:text="2048"
                         android:textStyle="bold"
                         android:textSize="25dp" />
                 </FrameLayout>
@@ -408,7 +406,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4.5"
-        android:background="#e0dcdc"></FrameLayout>
+        android:layout_weight="3.5"></FrameLayout>
 
 </LinearLayout>
